@@ -66,12 +66,12 @@
   }
 
   /* ---- DARK MODE TOKEN RE-POINT ---------------------------------------
-     The skin supplies body.alt values for the thirteen identity variables.
+     The skin supplies body.dark values for the thirteen identity variables.
      Everything derived re-points here, once, for every unit. This is the
      engine-level fix for the three defects logged in MOBILE_FIXES_HANDOVER:
      a skin no longer needs the patch block at all.
      ------------------------------------------------------------------- */
-  body.alt {
+  body.dark {
     --muted:      var(--fade);
     --hair:       rgba(255,255,255,0.14);
     --hair-strong:rgba(255,255,255,0.26);
@@ -89,11 +89,9 @@
     --inset:  rgba(255,255,255,0.05);
   }
   /* Key term chips keep a visible edge once the ground inverts. */
-  body.alt .kt-term { border-color: var(--hair-strong); }
-  body.alt .kt-term summary { color: var(--ink); }
-  body.alt .kt-label { border-top-color: var(--hair-strong); }
-  /* v2 dimmed the options a learner did not pick; at 0.45 they vanish on a dark ground. */
-  body.alt .option.dimmed, body.alt .option-btn.dimmed { opacity: 0.72; }
+  body.dark .kt-term { border-color: var(--hair-strong); }
+  body.dark .kt-term summary { color: var(--ink); }
+  body.dark .kt-label { border-top-color: var(--hair-strong); }
 
   /* ---- MODE TOGGLE. Fixed bottom right, 44px minimum tap target. ---- */
   .mode-toggle {
@@ -197,6 +195,10 @@
   /* bottle green for the structure, copper for anything the learner earned */
   --a1: #1D4D3B;  --a1-rgb: 29,77,59;
   --a2: #9E5320;  --a2-rgb: 158,83,32;
+  /* The two hover steps are derived, not identity. Left in the engine block
+     they kept the engine's bottle green against this skin's copper. */
+  --ink-deep: #0F1613;
+  --a2-deep:  #783E18;
   --serif: Georgia, 'Times New Roman', serif;
   --sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --mono: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace;
@@ -391,7 +393,7 @@ h1, h2, h3 {
    --fade is chosen to clear 7 to 1 against --paper, because it is what --muted
    inherits and --muted is every expander body. Measured at 8.6 against --paper and 7.4 against --cut, which is the
    ground it actually sits on inside a source expander. */
-body.alt {
+body.dark {
   --sand:  #101613;
   --paper: #1A221E;
   --cut:   #242D28;
@@ -400,8 +402,11 @@ body.alt {
   --fade:  #B6C4BC;
   --a1: #6FBF9C;  --a1-rgb: 111,191,156;
   --a2: #E8A263;  --a2-rgb: 232,162,99;
+  /* On a dark ground a hover step goes lighter, not deeper. */
+  --ink-deep: #FFFFFF;
+  --a2-deep:  #F2BE8C;
 }
-body.alt {
+body.dark {
   background-image:
     repeating-linear-gradient(0deg,
       transparent 0 63px,
@@ -409,48 +414,48 @@ body.alt {
       rgba(231,237,233,0.07) 64px 65px,
       transparent 65px 66px) !important;
 }
-body.alt .card, body.alt .source, body.alt .stat-wrap,
-body.alt .carousel, body.alt .kt { border-color: rgba(111,191,156,0.28) !important; }
-body.alt .card, body.alt .stat-wrap, body.alt .carousel {
+body.dark .card, body.dark .source, body.dark .stat-wrap,
+body.dark .carousel, body.dark .kt { border-color: rgba(111,191,156,0.28) !important; }
+body.dark .card, body.dark .stat-wrap, body.dark .carousel {
   box-shadow: inset 0 3px 0 0 rgba(0,0,0,0.45) !important;
 }
-body.alt .source {
+body.dark .source {
   border-left-color: var(--a1) !important;
   box-shadow: inset 2px 2px 5px rgba(0,0,0,0.40) !important;
 }
-body.alt .source-attr { border-bottom-color: rgba(111,191,156,0.36); }
-body.alt .stage-tag, body.alt .kt-label,
-body.alt .expl-label, body.alt .pop-label { color: #101613 !important; }
-body.alt .btn-begin { color: #101613 !important; }
-body.alt .btn-begin:hover { background: #8CD0B2 !important; border-color: #8CD0B2 !important; }
-body.alt .rule, body.alt .cover-rule, body.alt .flourish, body.alt .story-rule {
+body.dark .source-attr { border-bottom-color: rgba(111,191,156,0.36); }
+body.dark .stage-tag, body.dark .kt-label,
+body.dark .expl-label, body.dark .pop-label { color: #101613 !important; }
+body.dark .btn-begin { color: #101613 !important; }
+body.dark .btn-begin:hover { background: #8CD0B2 !important; border-color: #8CD0B2 !important; }
+body.dark .rule, body.dark .cover-rule, body.dark .flourish, body.dark .story-rule {
   background-image:
     linear-gradient(180deg,
       var(--a1) 0 3px,
       rgba(0,0,0,0.5) 3px 5px,
       transparent 5px 6px) !important;
 }
-body.alt .figure img { filter: brightness(0.9) contrast(1.02); }
-body.alt .figure img, body.alt .figure svg { border-color: rgba(111,191,156,0.44) !important; }
+body.dark .figure img { filter: brightness(0.9) contrast(1.02); }
+body.dark .figure img, body.dark .figure svg { border-color: rgba(111,191,156,0.44) !important; }
 
-body.alt .primary-btn {
+body.dark .primary-btn {
   background: var(--cut) !important;
   color: var(--ink) !important;
   border: 1px solid rgba(111,191,156,0.38) !important;
 }
-body.alt .primary-btn:hover { background: #2C3730 !important; }
-body.alt .primary-btn .btn-title { color: var(--ink) !important; }
-body.alt .primary-btn .btn-sub   { color: var(--fade) !important; }
-body.alt .primary-btn .btn-num,
-body.alt .primary-btn .btn-arrow { color: var(--a1) !important; }
-body.alt .chip-apply {
+body.dark .primary-btn:hover { background: #2C3730 !important; }
+body.dark .primary-btn .btn-title { color: var(--ink) !important; }
+body.dark .primary-btn .btn-sub   { color: var(--fade) !important; }
+body.dark .primary-btn .btn-num,
+body.dark .primary-btn .btn-arrow { color: var(--a1) !important; }
+body.dark .chip-apply {
   background: rgba(231,237,233,0.16) !important;
   color: var(--ink) !important;
 }
 /* Light serif at 0.95rem thins out on a dark ground, and the explanation block
    is the longest reading on any screen. */
-body.alt .expl-text, body.alt .disc-body { color: var(--ink) !important; }
-body.alt .expl-text { font-size: 1rem !important; line-height: 1.75 !important; }
+body.dark .expl-text, body.dark .disc-body { color: var(--ink) !important; }
+body.dark .expl-text { font-size: 1rem !important; line-height: 1.75 !important; }
 
 /* The toggle is fixed bottom right and lands on Continue on a short viewport.
    Kept above the 44px tap minimum at 360px. */
@@ -513,11 +518,14 @@ body { padding-bottom: 4.5rem !important; }
   .sections-label { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--fade); text-align: center; margin-bottom: 1.2rem; font-weight: 700; }
   .primary-btn { font-family: var(--sans); width: 100%; display: flex; align-items: center; gap: 1rem; padding: 1.3rem 1.5rem; background: var(--ink); color: var(--on-ink); border: none; cursor: pointer; font-family: inherit; text-align: left; transition: all 0.2s; margin-bottom: 1rem; }
   .primary-btn:hover { background: var(--ink-deep); transform: translateX(4px); }
-  .btn-num { font-family: var(--sans); font-size: 1.4rem; color: var(--a1); font-weight: 800; min-width: 35px; }
+  .btn-num { font-family: var(--sans); font-size: 1.4rem; color: var(--on-ink); font-weight: 800; min-width: 35px; }
   .btn-txt { flex: 1; display: flex; flex-direction: column; gap: 0.2rem; }
   .btn-title { font-family: var(--sans); font-size: 1.15rem; font-weight: 700; }
-  .btn-sub { font-family: var(--sans); font-size: 0.82rem; color: var(--muted); }
-  .btn-arrow { font-size: 1.3rem; color: var(--a1); }
+  /* These three sit inside .primary-btn, whose light ground is --ink, so they
+     take --on-ink. On --muted and --a1 they were paper colours on near-black.
+     The dark overrides below are correct and stay: there the button is --cut. */
+  .btn-sub { font-family: var(--sans); font-size: 0.82rem; color: var(--on-ink); opacity: 0.82; }
+  .btn-arrow { font-size: 1.3rem; color: var(--on-ink); }
   .section-list { display: flex; flex-direction: column; gap: 0.5rem; }
   .section-btn { display: flex; align-items: center; gap: 1rem; padding: 0.95rem 1.1rem; background: transparent; border: 1px solid var(--hair-strong); cursor: pointer; font-family: inherit; text-align: left; transition: all 0.2s; color: var(--ink); }
   .section-btn:hover { background: var(--paper); border-color: var(--a1); }
@@ -542,8 +550,10 @@ body { padding-bottom: 4.5rem !important; }
   .option-btn.selected { background: var(--cut); border-color: var(--a1); border-width: 2px; padding: 0.94rem 0.99rem; }
   .option-btn.correct { background: var(--ok-bg); border-color: var(--a2); border-width: 2px; padding: 0.94rem 0.99rem; }
   .option-btn.wrong { background: var(--no-bg); border-color: var(--clay); border-width: 2px; padding: 0.94rem 0.99rem; }
-  .option-btn.dimmed { opacity: 0.48; }
-  body.alt .option-btn.dimmed { opacity: 0.72; }
+  /* The dimmed state fell below readable contrast at 360px. One rule per mode,
+     and nothing later in the file competes with it. */
+  .option.dimmed, .option-btn.dimmed { opacity: 0.82; }
+  body.dark .option.dimmed, body.dark .option-btn.dimmed { opacity: 0.86; }
   .opt-letter { font-weight: 800; color: var(--a1); min-width: 1.1rem; }
   .opt-text { flex: 1; }
   .opt-mark { font-weight: 700; font-size: 1.1rem; }
@@ -590,16 +600,6 @@ body { padding-bottom: 4.5rem !important; }
   .hidden { display: none !important; }
 
 
-  /* v2.1 finish pop-up, matched to the lesson engine so a learner meets the
-     same closing screen in all seven files of a unit. */
-  .pop-back { position: fixed; inset: 0; background: var(--scrim); display: flex;
-    align-items: center; justify-content: center; padding: 1.2rem; z-index: 90; }
-  .pop { background: var(--paper); border: 1px solid var(--hair); max-width: 26rem;
-    width: 100%; padding: 1.4rem 1.3rem; text-align: center; }
-  .pop-label { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.15em;
-    text-transform: uppercase; font-weight: 700; color: var(--a1); }
-  .pop-text { font-size: 0.95rem; line-height: 1.6; color: var(--ink); margin: 0.5rem 0 1.1rem; }
-  .pop-btn { font-family: var(--sans); font-size: 0.78rem; font-weight: 700;
     letter-spacing: 0.09em; text-transform: uppercase; min-height: 44px; padding: 0.6rem 1.4rem;
     cursor: pointer; background: transparent; color: var(--muted);
     border: 1px solid var(--hair); border-radius: 0; }
@@ -678,22 +678,39 @@ body { padding-bottom: 4.5rem !important; }
     <div class="breakdown"><div class="breakdown-label">By tier</div><div id="level-rows"></div></div>
     <div class="breakdown"><div class="breakdown-label">By section</div><div id="breakdown-rows"></div></div>
     <div><div class="review-all-label">Every question</div><div id="review-cards"></div></div>
+    <p class="grade-desc hidden" id="closing-line"></p>
     <div class="review-actions">
       <button class="primary-btn" id="restart-btn"><span class="btn-txt"><span class="btn-title">Return to menu</span><span class="btn-sub">Try another section or retake the full test</span></span><span class="btn-arrow">&#8635;</span></button>
-      <button class="primary-btn" id="finish-btn"><span class="btn-txt"><span class="btn-title">Finish</span><span class="btn-sub">Then tap Done to finish</span></span><span class="btn-arrow">&rarr;</span></button>
+      <button class="primary-btn" id="finish-btn"><span class="btn-txt"><span class="btn-title">Finish the unit</span><span class="btn-sub">Come back here whenever you need it</span></span><span class="btn-arrow">&rarr;</span></button>
     </div>
   </div>
 </div>
 
 <script>
+/* ---- LMS EMBED EVENTS ----------------------------------------------------
+   Two moments, deliberately separate. Reaching the closing screen marks the
+   activity done for progress tracking. Choosing to leave it advances. Firing
+   advance on arrival would pull the learner off their own results screen
+   before they had read it. ------------------------------------------------ */
+var KulaLMS = (function(){
+  var done = false;
+  function send(ev){
+    try{
+      window.parent.postMessage({ type: 'lms-embed-event', version: '1.0',
+        payload: { event: ev } }, '*');
+    }catch(e){}
+  }
+  return {
+    completed: function(){ if(done) return; done = true; send('completed'); },
+    advance:   function(){ send('advance'); }
+  };
+})();
 /* kula: re-entry guard. Every declaration below is function scoped, so a
    viewer that re-runs this script re-initialises instead of throwing a
    redeclaration SyntaxError. */
 (function(){
 const MODE = "b";
-const DONE_LABEL = "Unit complete";
-const DONE_TITLE = "What Stuck";
-const DONE_TEXT  = "Congratulations on completing Coming to Terms with the Past. Come back here whenever you need to revise for a test or exam.";
+const CLOSING_TEXT = "Congratulations on completing Coming to Terms with the Past. Come back here whenever you have a test or exam, or just need to consolidate your work.";
 const INTRO = "The same eighteen facts, approached from the other side. Nothing here is a reworded version of the first check, so recognising the shape of a question will not help you. Have the score you wrote down before Lesson 1 ready.";
 const SECTIONS = [
   "Why a commission",
@@ -802,7 +819,7 @@ const QUESTIONS = [
       "It never named any organisation in its final report"
     ],
     "correct": 0,
-    "explanation": "The final report criticised the ANC as well, naming torture and executions in the training camps in exile and the necklace killings carried out by supporters of the front. That even-handedness is why Mbeki objected and why the ANC tried to block publication. Option {opt2} narrows it further in the same wrong direction. The report cut both ways, and that is why a one-sided account cannot explain to you who was angry.",
+    "explanation": "The final report criticised the ANC as well. It named torture and executions in the training camps in exile. It also named the necklace killings carried out by supporters of the United Democratic Front. That even-handedness is why Mbeki objected and why the ANC tried to block publication. Option {opt2} narrows it further in the same wrong direction. The report cut both ways, and that is why a one-sided account cannot explain to you who was angry.",
     "id": 7,
     "slot": 7,
     "section": "How it was built",
@@ -817,7 +834,7 @@ const QUESTIONS = [
       "The amnesty decisions were taken by the listening public"
     ],
     "correct": 0,
-    "explanation": "Radio and television carried the testimony into homes across the country, which made the process national rather than merely legal. That is a large part of why the TRC is remembered as a public reckoning, because most people met it through a broadcast. Option {opt1} names a real power the commission had, and it came from the Act rather than from the broadcasts, and you would not be the first to take it. Radio and television carried the hearings into homes across the country.",
+    "explanation": "Radio and television carried the testimony into homes across the country, which made the process national rather than merely legal. That is a large part of why the TRC is remembered as a public reckoning, because most people met it through a broadcast. Option {opt1} names a real power the commission had. That power came from the Act, not from the broadcasts. You would not be the first to take it. Radio and television carried the hearings into homes across the country.",
     "id": 8,
     "slot": 8,
     "section": "What it heard",
@@ -922,7 +939,7 @@ const QUESTIONS = [
       "Reparations were paid in full but only after 2003"
     ],
     "correct": 0,
-    "explanation": "About a thousand claims were approved and more than twenty five thousand were still waiting. Payments depended on the president and parliament rather than on the commission, because the Act put the decision there. Option {opt1} goes too far the other way, since reparations were recommended and a fund was set up, and it is the answer you would reach for first. About a thousand approved against more than twenty-five thousand waiting.",
+    "explanation": "About a thousand claims were approved and more than twenty five thousand were still waiting. Payments depended on the president and parliament rather than on the commission, because the Act put the decision there. Option {opt1} goes too far the other way. Reparations were recommended and a fund was set up. It is still the one most people reach for. About a thousand approved against more than twenty-five thousand waiting.",
     "id": 15,
     "slot": 15,
     "section": "What it missed",
@@ -967,7 +984,7 @@ const QUESTIONS = [
       "It was paid for entirely by the national government"
     ],
     "correct": 0,
-    "explanation": "Thabo Mbeki and Mangosuthu Buthelezi unveiled it together, and they led the two sides whose supporters had killed over six hundred people in Thokoza, and the source says it plainly enough for you to quote. The memorial carries a roll of honour with the names of everyone who died there, from both sides. It stands on Khumalo Street, because that had been the boundary between the hostel dwellers and the township residents. Local businesses paid for part of it, alongside the government.",
+    "explanation": "Thabo Mbeki and Mangosuthu Buthelezi unveiled it together. They led the two sides whose supporters had killed over six hundred people in Thokoza. The source says it plainly enough for you to quote. The memorial carries a roll of honour with the names of everyone who died there, from both sides. It stands on Khumalo Street, because that had been the boundary between the hostel dwellers and the township residents. Local businesses paid for part of it, alongside the government.",
     "id": 18,
     "slot": 18,
     "section": "Findings and remembering",
@@ -1113,20 +1130,9 @@ document.getElementById('prev-btn').addEventListener('click', () => {
 document.getElementById('exit-btn').addEventListener('click', () => { quiz.classList.add('hidden'); menu.classList.remove('hidden'); });
 document.getElementById('restart-btn').addEventListener('click', () => { review.classList.add('hidden'); menu.classList.remove('hidden'); });
 
-/* v2.1. Every file in a unit now ends the same way: Finish, then a pop-up whose
-   only job is to tell the learner to tap the platform's Done control. The four
-   knowledge checks previously ended on the results screen with no instruction,
-   so two files in every seven closed differently from the other five. */
-document.getElementById('finish-btn').addEventListener('click', () => {
-  const back = document.createElement('div');
-  back.className = 'pop-back';
-  back.innerHTML = '<div class="pop"><div class="pop-label">' + DONE_LABEL +
-    '</div><h3 style="margin:.4rem 0 .2rem;font-size:1.05rem;">' + DONE_TITLE +
-    '</h3><div class="pop-text">' + DONE_TEXT +
-    '</div><button class="pop-btn" id="fin-ok">Done</button></div>';
-  document.body.appendChild(back);
-  document.getElementById('fin-ok').addEventListener('click', () => back.remove());
-});
+/* The button at the end of the file is the thing that continues. It does not
+   point at a control somewhere else on the page. */
+document.getElementById('finish-btn').addEventListener('click', () => { KulaLMS.advance(); });
 
 function weakestSection(){
   let worst = SECTIONS[0], worstPct = 2;
@@ -1204,6 +1210,9 @@ function showReview(){
     rows.innerHTML += `<div class="breakdown-row"><div class="breakdown-name">${sec}</div><div class="breakdown-bar"><div class="breakdown-fill" style="width:${p}%"></div></div><div class="breakdown-score">${got}/${qs.length}</div></div>`;
   });
 
+  const closing = document.getElementById('closing-line');
+  if(CLOSING_TEXT){ closing.textContent = CLOSING_TEXT; closing.classList.remove('hidden'); }
+
   const cards = document.getElementById('review-cards'); cards.innerHTML = '';
   state.list.forEach((q, i) => {
     const your = state.answers[q.id];
@@ -1221,6 +1230,7 @@ function showReview(){
     cards.appendChild(card);
   });
   window.scrollTo({top:0,behavior:'smooth'});
+  KulaLMS.completed();
 }
 
 buildMenu();
@@ -1231,30 +1241,37 @@ buildMenu();
    Injects its own button so there is no stray markup, and lives inside the
    single script block so a first-to-last script extraction still parses. */
 (function(){
-  var NATIVE = "light";
-  try{ if(localStorage.getItem("kula-mode")==="alt"){ document.body.classList.add("alt"); } }catch(e){}
+  /* What is stored is the mode the learner chose, "light" or "dark". Never a
+     class name, and never "native": those describe nothing on a unit built the
+     other way round, so the choice did not survive crossing between a source
+     unit and an essay unit. For an essay unit set NATIVE "dark", FLIP "light",
+     CLS "bright". Nothing else changes. */
+  var NATIVE = "light";   // the mode this unit is designed in
+  var FLIP   = "dark";    // the mode the toggle offers
+  var CLS    = "dark";    // the class that produces FLIP in this unit
+  try{ if(localStorage.getItem("kula-mode")===FLIP){ document.body.classList.add(CLS); } }catch(e){}
   var SUN='<circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/>';
   var MOON='<path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/>';
-  var b=document.getElementById("mode-toggle");
+  var b=document.getElementById("kula-mode-toggle");
   if(!b){
     b=document.createElement("button");
-    b.className="mode-toggle"; b.id="mode-toggle"; b.type="button";
+    b.className="mode-toggle"; b.id="kula-mode-toggle"; b.type="button";
     b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true" id="mode-icon"></svg><span id="mode-label"></span>';
     document.body.appendChild(b);
   }
   var lab=document.getElementById("mode-label"), ic=document.getElementById("mode-icon");
   function paint(){
-    var onAlt=document.body.classList.contains("alt");
-    var showing = onAlt ? (NATIVE==="dark" ? "light" : "dark") : NATIVE;
+    var flipped = document.body.classList.contains(CLS);
+    var showing = flipped ? FLIP : NATIVE;
     var offering = showing==="dark" ? "light" : "dark";
-    lab.textContent = offering==="light" ? "Light Mode" : "Dark Mode";
+    lab.textContent = offering==="light" ? "Light mode" : "Dark mode";
     ic.innerHTML = offering==="light" ? SUN : MOON;
-    b.setAttribute("aria-pressed", onAlt ? "true" : "false");
+    b.setAttribute("aria-pressed", showing==="dark" ? "true" : "false");
     b.setAttribute("aria-label", "Switch to " + offering + " mode");
   }
   b.addEventListener("click",function(){
-    var onAlt=document.body.classList.toggle("alt");
-    try{ localStorage.setItem("kula-mode", onAlt ? "alt" : "native"); }catch(e){}
+    var flipped=document.body.classList.toggle(CLS);
+    try{ localStorage.setItem("kula-mode", flipped ? FLIP : NATIVE); }catch(e){}
     paint();
   });
   paint();
