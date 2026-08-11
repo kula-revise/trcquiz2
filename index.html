@@ -55,7 +55,7 @@
        b = the middle skill (Interpret, Understand). c = unassessed instinct.
        The top skill (Evaluate, Weigh, Apply) sits on a solid accent ground. */
     --chip-a-bg: rgba(var(--a1-rgb),0.16);  --chip-a-fg: var(--a1);
-    --chip-b-bg: rgba(var(--a2-rgb),0.16);  --chip-b-fg: var(--a2);
+    --chip-b-bg: rgba(var(--a2-rgb),0.16);  --chip-b-fg: var(--chip-ink);
     --chip-c-bg: rgba(0,0,0,0.06);
     --scrim:  rgba(27,42,51,0.5);       /* modal backdrop */
     --inset:  rgba(255,255,255,0.4);    /* sort column well */
@@ -195,6 +195,9 @@
   /* bottle green for the structure, copper for anything the learner earned */
   --a1: #1D4D3B;  --a1-rgb: 29,77,59;
   --a2: #9E5320;  --a2-rgb: 158,83,32;
+  /* The interpret and understand chips put --a2 on a tint of itself and measured 4.32.
+     One step darker clears 4.5 and is used for the chip text only. */
+  --chip-ink: #8F4A1C;
   /* The two hover steps are derived, not identity. Left in the engine block
      they kept the engine's bottle green against this skin's copper. */
   --ink-deep: #0F1613;
@@ -729,7 +732,7 @@ const QUESTIONS = [
       "Deputy President Thabo Mbeki, appointed in 1995"
     ],
     "correct": 0,
-    "explanation": "Tutu chaired it, and the choice was deliberate. A commission led by an archbishop rather than a judge signalled that this was about reconciliation rather than prosecution. Option {opt2} is a real judge of the period who had led an earlier commission into violence, which is why he tempts you here. The chairmanship is also one reason people later criticised the TRC for sounding too Christian.",
+    "explanation": "Tutu chaired it, and the choice was deliberate. An archbishop, not a judge. That said the commission was about reconciliation, not prosecution. Option {opt2} is a real judge of the period who had led an earlier commission into violence, which is why he tempts you. The choice of Tutu is also why people later said the TRC sounded too Christian.",
     "id": 1,
     "slot": 1,
     "section": "Why a commission",
@@ -744,7 +747,7 @@ const QUESTIONS = [
       "The Republic referendum and the exit from the Commonwealth"
     ],
     "correct": 0,
-    "explanation": "1960 is Sharpeville and the bannings that followed it. The commission's window begins there, which tells you it was built around the era of open conflict. Option {opt2} is 1976, and it tempts you because that feels like the beginning of the modern struggle. Sharpeville opens the window, and everything before 1960 falls outside it.",
+    "explanation": "1960 is Sharpeville, and the bannings that followed it. The commission's window opens there. That tells you it was built around the years of open conflict. Option {opt2} is 1976. It tempts you because that feels like the start of the modern struggle. Everything before 1960 falls outside.",
     "id": 2,
     "slot": 2,
     "section": "Why a commission",
@@ -759,7 +762,7 @@ const QUESTIONS = [
       "The emphasis fell on secrecy rather than on public hearings"
     ],
     "correct": 0,
-    "explanation": "Restorative means repairing. The TRC was not a court of law, could not prosecute anyone and handed down no judgments. Its job was to establish what had happened so the country could move on, and that is why the hearings were public. Option {opt2} names something the commission did recommend, and it was never the main purpose you are being asked about.",
+    "explanation": "Restorative means repairing. The TRC was not a court. It could not prosecute anyone and it handed down no judgments. Its job was to establish what had happened, so the country could move on. That is why the hearings were public. Option {opt2} names something the commission did recommend. It was never the main purpose.",
     "id": 3,
     "slot": 3,
     "section": "Why a commission",
@@ -774,7 +777,7 @@ const QUESTIONS = [
       "Amnesty was never actually granted to anyone at all"
     ],
     "correct": 0,
-    "explanation": "Of 7 116 applications, 1 167 were granted, so roughly one in six succeeded. The conditions did real work, because an applicant had to make a full disclosure and show a political objective rather than personal malice or gain. Option {opt1} misses that people from the liberation movements applied too, and it is the assumption you are most likely to arrive with. Five in six were refused, which is what a conditional amnesty looks like.",
+    "explanation": "Of 7 116 applications, 1 167 were granted. Roughly one in six. The conditions did real work. An applicant had to make a full disclosure and show a political objective, not personal spite or profit. Option {opt1} misses that people from the liberation movements applied too. Five in six were refused, and that is what a conditional amnesty looks like.",
     "id": 4,
     "slot": 4,
     "section": "Why a commission",
@@ -804,7 +807,7 @@ const QUESTIONS = [
       "It was passed to the ordinary courts for a criminal trial"
     ],
     "correct": 0,
-    "explanation": "The application failed. The Cradock Four is the case to remember, because the police responsible applied and were refused for not making a full disclosure. Option {opt2} would make the political motive enough on its own, and the Act required both. Motive and disclosure came as a pair, and an answer that gives you one is half an answer.",
+    "explanation": "The application failed. The Cradock Four is the case to remember. The police responsible applied and were refused, because they had not told the whole truth. Option {opt2} would make the political motive enough on its own. The Act asked for both. Give one and you have given half an answer.",
     "id": 6,
     "slot": 6,
     "section": "How it was built",
@@ -819,7 +822,7 @@ const QUESTIONS = [
       "It never named any organisation in its final report"
     ],
     "correct": 0,
-    "explanation": "The final report criticised the ANC as well. It named torture and executions in the training camps in exile. It also named the necklace killings carried out by supporters of the United Democratic Front. That even-handedness is why Mbeki objected and why the ANC tried to block publication. Option {opt2} narrows it further in the same wrong direction. The report cut both ways, and that is why a one-sided account cannot explain to you who was angry.",
+    "explanation": "The final report criticised the ANC as well. It named torture and executions in the training camps in exile. It also named the necklace killings by supporters of the United Democratic Front. That is why Mbeki objected and why the ANC tried to block publication. Option {opt2} narrows it further in the same wrong direction. The report cut both ways, and a one-sided account cannot explain to you who was angry.",
     "id": 7,
     "slot": 7,
     "section": "How it was built",
@@ -834,7 +837,7 @@ const QUESTIONS = [
       "The amnesty decisions were taken by the listening public"
     ],
     "correct": 0,
-    "explanation": "Radio and television carried the testimony into homes across the country, which made the process national rather than merely legal. That is a large part of why the TRC is remembered as a public reckoning, because most people met it through a broadcast. Option {opt1} names a real power the commission had. That power came from the Act, not from the broadcasts. You would not be the first to take it. Radio and television carried the hearings into homes across the country.",
+    "explanation": "Radio and television carried the testimony into homes across the country. That made it a national event and not just a legal one. Most people met the TRC through a broadcast, which is why it is remembered as a public reckoning. Option {opt1} names a real power the commission had. That power came from the Act, not from the broadcasts.",
     "id": 8,
     "slot": 8,
     "section": "What it heard",
@@ -849,7 +852,7 @@ const QUESTIONS = [
       "Granted, because the men had already served prison sentences"
     ],
     "correct": 0,
-    "explanation": "Refused, and the reason is the useful part: they had not made a full disclosure of what happened. This is the clearest case for showing that the conditions were more than paperwork. Option {opt1} is what many people assume happened, because the political motive was obvious, which is where you would go wrong. The refusal turned on disclosure, and the political motive was never in doubt.",
+    "explanation": "Refused, and the reason is the useful part. They had not made a full disclosure of what happened. This is the clearest case for showing you that the conditions were more than paperwork. Option {opt1} is what many people assume, because the political motive was obvious. The refusal turned on disclosure. Nobody doubted the motive.",
     "id": 9,
     "slot": 9,
     "section": "What it heard",
@@ -864,7 +867,7 @@ const QUESTIONS = [
       "The Amnesty Committee had already refused those applications"
     ],
     "correct": 0,
-    "explanation": "The epilogue to the interim constitution said amnesty shall be granted, and told parliament to pass a law providing for it. So the court held that the Act was doing what the constitution required, because the promise of amnesty was written into the constitution itself. Option {opt1} is the sort of technical answer that feels plausible and is not what happened, and that is the reading you have to rule out. The epilogue had ordered an amnesty law, so the Act was obeying the constitution.",
+    "explanation": "The epilogue to the interim constitution said amnesty shall be granted. It told parliament to pass a law providing for it. So the court held that the Act was doing what the constitution required. Option {opt1} is the sort of technical answer that feels plausible to you. It is not what happened. The epilogue had ordered an amnesty law, so the Act was obeying the constitution.",
     "id": 10,
     "slot": 10,
     "section": "What it heard",
@@ -879,7 +882,7 @@ const QUESTIONS = [
       "Families were paid compensation before any amnesty was granted"
     ],
     "correct": 0,
-    "explanation": "The Biko, Mxenge and Ribeiro families challenged the amnesty provisions in 1996 and the case went to the highest court in the country. They objected in the strongest way available and still lost. Option {opt1} overstates the position badly, because no family could block an application, which is why it looks right to you. The challenge went to the highest court in the country and failed there.",
+    "explanation": "The Biko, Mxenge and Ribeiro families challenged the amnesty provisions in 1996. The case went to the highest court in the country. They objected in the strongest way open to them, and they still lost. Option {opt1} overstates it badly. No family could block an application, which is why it looks right to you.",
     "id": 11,
     "slot": 11,
     "section": "What it heard",
@@ -894,7 +897,7 @@ const QUESTIONS = [
       "The final report, which was never actually published"
     ],
     "correct": 0,
-    "explanation": "Reparations. Amnesty had clear rules and the hearings reached the whole country, and the reparations promise largely did not arrive. Perpetrators got a decision inside the commission's lifetime while victims waited on parliament and the president. Victims waited on parliament while perpetrators got a decision, and that is why you will see the process called generous to the wrong side.",
+    "explanation": "Reparations. Amnesty had clear rules. The hearings reached the whole country. The reparations promise largely did not arrive. A perpetrator got a decision inside the commission's lifetime. A victim waited on parliament and the president. That is why you will see the process called generous to the wrong side.",
     "id": 12,
     "slot": 12,
     "section": "What it missed",
@@ -909,7 +912,7 @@ const QUESTIONS = [
       "Over forty million people"
     ],
     "correct": 0,
-    "explanation": "Over four million. The number dwarfs the 22 000 who came forward, because it shows the scale of what the commission never reached. Forced removals were lawful under apartheid, which is part of why they fell outside a body looking for gross violations. Option {opt1} is out by a factor of ten, and at that size it will still look plausible to you.",
+    "explanation": "Over four million. Set that against the 22 000 who came forward and you can see the scale of what the commission never reached. Forced removals were lawful under apartheid, so they mostly fell outside a body looking for gross violations. Option {opt1} is out by a factor of ten, and at that size it will still look plausible to you.",
     "id": 13,
     "slot": 13,
     "section": "What it missed",
@@ -924,7 +927,7 @@ const QUESTIONS = [
       "It had promised the parties that nobody would be forced"
     ],
     "correct": 0,
-    "explanation": "Buthelezi is the example. The commission decided not to subpoena him, because forcing him might have reignited the fighting between Inkatha and ANC supporters. The cost was that the causes of that violence were never fully investigated. Option {opt2} invents a limit that the Act does not contain, and you can say so plainly.",
+    "explanation": "Buthelezi is the example. The commission chose not to subpoena him. Forcing him might have restarted the fighting between Inkatha and ANC supporters. The cost was that the causes of that violence were never fully investigated. Option {opt2} invents a limit the Act does not contain, and you can say so plainly.",
     "id": 14,
     "slot": 14,
     "section": "What it missed",
@@ -954,7 +957,7 @@ const QUESTIONS = [
       "Thabo Mbeki, who represented the ANC at the hearings"
     ],
     "correct": 0,
-    "explanation": "Botha refused. De Klerk did appear and apologised for apartheid, while insisting he had never authorised or known about the brutal actions of the security forces. He later went to court to stop a paragraph of the report that held him responsible for third force activity. Keeping the two men apart matters, because you will lose the argument if you attribute one response to the other.",
+    "explanation": "Botha refused. De Klerk did appear, and he apologised for apartheid. He insisted he had never ordered the brutal actions of the security forces, or known about them. He later went to court to stop a paragraph that held him responsible for third force activity. Keep the two men apart, or you will lose the argument by giving one man's answer to the other.",
     "id": 16,
     "slot": 16,
     "section": "Findings and remembering",
@@ -969,7 +972,7 @@ const QUESTIONS = [
       "That the parties had never been given a hearing"
     ],
     "correct": 0,
-    "explanation": "The National Party, the Inkatha Freedom Party and the ANC all attacked it, each for a different reason. De Klerk accused it of seeking revenge, Buthelezi said it favoured the ANC's version, and Mbeki said it judged the struggle wrongly. Being disliked by everyone is not proof of fairness, and you should treat it as evidence rather than as an argument. Option {opt3} misses that the parties did have special hearings of their own, because the commission heard them separately.",
+    "explanation": "The National Party, the Inkatha Freedom Party and the ANC all attacked it, each for a different reason. De Klerk said it was after revenge. Buthelezi said it favoured the ANC's version. Mbeki said it judged the struggle wrongly. Do not treat that as proof of fairness. It is evidence you still have to weigh. Option {opt3} misses that the parties did have special hearings of their own.",
     "id": 17,
     "slot": 17,
     "section": "Findings and remembering",
@@ -984,7 +987,7 @@ const QUESTIONS = [
       "It was paid for entirely by the national government"
     ],
     "correct": 0,
-    "explanation": "Thabo Mbeki and Mangosuthu Buthelezi unveiled it together. They led the two sides whose supporters had killed over six hundred people in Thokoza. The source says it plainly enough for you to quote. The memorial carries a roll of honour with the names of everyone who died there, from both sides. It stands on Khumalo Street, because that had been the boundary between the hostel dwellers and the township residents. Local businesses paid for part of it, alongside the government.",
+    "explanation": "Thabo Mbeki and Mangosuthu Buthelezi unveiled it together. They led the two sides whose supporters had killed over six hundred people in Thokoza. The memorial carries a roll of honour with the names of everyone who died there, from both sides. It stands on Khumalo Street, which had been the boundary between the hostel dwellers and the township residents. Local businesses paid for part of it, alongside the government.",
     "id": 18,
     "slot": 18,
     "section": "Findings and remembering",
