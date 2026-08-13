@@ -608,9 +608,129 @@ body { padding-bottom: 4.5rem !important; }
     border: 1px solid var(--hair); border-radius: 0; }
   .review-actions { display: grid; gap: 0.7rem; }
 
+
+/* ============================================================
+   EARNED STATES READ GREEN
+   Applied to match the other four source strands.
+
+   This strand is the awkward one. Its structural accent --a1 is
+   already a green, so "correct = green" cannot rely on hue
+   alone. Two things separate it. The correct option is the only
+   element in the strand that takes a solid fill of any colour,
+   and it is the only one that carries a tick. The green chosen
+   also sits 26 degrees off the structural one and is markedly
+   more saturated: structure is a desaturated pine at hue 158,
+   the earned state a leaf green at hue 132.
+
+   Two defects in the existing states are fixed at the same time.
+   --ok-bg used --a2, the copper, so a correct answer wore the
+   reward colour as a faint tint. Worse, --no-bg in dark mode
+   resolved to rgba(--a1) which is the strand's green, so a
+   WRONG option was tinted green at night. Both states are now
+   set explicitly and neither depends on those tokens.
+
+   Measured on this skin's own grounds:
+     light  paper text on #2A6335      6.82 : 1
+            the fill against the page  5.88 : 1
+     dark   ink text on #93D98A       10.93 : 1
+   ============================================================ */
+:root { --ok: #2A6335; --ok-rgb: 42,99,53; --on-ok: #F8FAF7; --no-line: #8C4A2F; }
+body.dark { --ok: #93D98A; --ok-rgb: 147,217,138; --on-ok: #101613; --no-line: #E8A263; }
+
+.option.correct, .option-btn.correct,
+body.dark .option.correct, body.dark .option-btn.correct {
+  background: var(--ok) !important;
+  border: 2px solid var(--ok) !important;
+  box-shadow: 5px 5px 0 rgba(var(--ok-rgb),0.30) !important;
+  color: var(--on-ok) !important;
+}
+.option.correct .opt-text, .option-btn.correct .opt-text,
+.option.correct .opt-letter, .option-btn.correct .opt-letter,
+.option.correct .opt-mark, .option-btn.correct .opt-mark,
+body.dark .option.correct .opt-text, body.dark .option-btn.correct .opt-text,
+body.dark .option.correct .opt-letter, body.dark .option-btn.correct .opt-letter,
+body.dark .option.correct .opt-mark, body.dark .option-btn.correct .opt-mark {
+  color: var(--on-ok) !important;
+}
+.option.correct .opt-letter, .option-btn.correct .opt-letter { opacity: 0.85; }
+
+/* The wrong state takes the copper, never the strand's green. */
+.option.wrong, .option-btn.wrong,
+body.dark .option.wrong, body.dark .option-btn.wrong {
+  background: rgba(140,74,47,0.14) !important;
+  border: 2px solid var(--no-line) !important;
+  box-shadow: none !important;
+}
+body.dark .option.wrong, body.dark .option-btn.wrong { background: rgba(232,162,99,0.16) !important; }
+.option.wrong .opt-letter, .option.wrong .opt-mark,
+.option-btn.wrong .opt-letter, .option-btn.wrong .opt-mark { color: var(--no-line) !important; }
+
+.inter-item.ok, body.dark .inter-item.ok {
+  background: var(--ok) !important;
+  border: 2px solid var(--ok) !important;
+  color: var(--on-ok) !important;
+}
+.inter-item.ok span, .inter-item.ok .rank,
+body.dark .inter-item.ok span, body.dark .inter-item.ok .rank { color: var(--on-ok) !important; }
+.inter-item.ok .rank { opacity: 0.85; }
+.bd-fill { background: var(--ok) !important; }
+
+/* ---- Correctness reads on the sort and the order -------------- */
+.inter-item { justify-content: flex-start; }
+.inter-body { flex: 1 1 auto; }
+.inter-mark { font-weight: 700; font-size: 1.1rem; margin-left: 0.6rem; flex: 0 0 auto; }
+.inter-item.ok .inter-mark { color: var(--on-ok) !important; }
+.inter-item.no, body.dark .inter-item.no {
+  background: rgba(140,74,47,0.14) !important;
+  border: 2px solid var(--no-line) !important;
+}
+body.dark .inter-item.no { background: rgba(232,162,99,0.16) !important; }
+.inter-item.no .inter-mark, .inter-item.no .rank { color: var(--no-line) !important; }
+.inter-should {
+  display: block; margin-top: 0.3rem;
+  font-family: var(--sans); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--no-line);
+}
+
+/* A dashed border is the web's convention for a drop target and there
+   is no drag and drop anywhere in the page. */
+.sort-col { border-style: solid !important; }
+
+/* Sort columns stack on a phone: at 390px a two column grid gives each
+   column about 110px, and a ten word claim wraps to one word a line. */
+@media (max-width: 560px) {
+  .sort-cols { grid-template-columns: 1fr; gap: 0.7rem; }
+  .sort-col { min-height: 3rem; }
+}
+
+/* An inline label that does nothing loses the accent. */
+.card p > strong:first-child, .source p > strong:first-child { color: var(--ink) !important; }
+.kt-term > summary {
+  color: var(--a2);
+  text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px;
+}
+
+.marks-gloss {
+  font-family: var(--sans); font-size: 0.74rem; line-height: 1.5;
+  color: var(--fade); margin: -0.3rem 0 0.9rem;
+  border-left: 2px solid var(--hair-strong); padding-left: 0.6rem;
+}
+.score-note {
+  font-family: var(--sans); font-size: 0.8rem; line-height: 1.55;
+  color: var(--fade); text-align: center; margin: -0.4rem 0 1.3rem;
+}
+.peek-who { text-transform: none !important; letter-spacing: 0 !important; }
+
+/* The top bar tag is set to one line with an ellipsis, so a long strand
+   name is cut on a narrow screen. */
+@media (max-width: 430px) {
+  .top-meta { font-size: 0.58rem !important; letter-spacing: 0.06em !important; }
+  .top-meta #lesson-tag { min-width: 0; }
+}
+
 </style>
 </head>
-<body>
+<body class="dark">
 <div class="container">
 
   <!-- MENU -->
@@ -672,7 +792,7 @@ body { padding-bottom: 4.5rem !important; }
       <div class="rule"></div>
     </div>
     <div class="score-row">
-      <div class="score-block"><div class="score-num"><span id="score-correct">0</span><span class="score-den">/<span id="score-total">0</span></span></div><div class="score-label">Correct</div></div>
+      <div class="score-block"><div class="score-num"><span id="score-correct">0</span><span class="score-den">/<span id="score-total">0</span></span></div><div class="score-label">Questions right</div></div>
       <div class="score-block"><div class="score-num"><span id="score-percent">0</span><span class="score-den">%</span></div><div class="score-label">Accuracy</div></div>
       <div class="score-block"><div class="score-word" id="score-grade">-</div><div class="score-label">Band</div></div>
     </div>
@@ -822,7 +942,7 @@ const QUESTIONS = [
       "It never named any organisation in its final report"
     ],
     "correct": 0,
-    "explanation": "The final report criticised the ANC as well. It named torture and executions in the training camps in exile. It also named the necklace killings by supporters of the United Democratic Front. That is why Mbeki objected and why the ANC tried to block publication. Option {opt2} narrows it further in the same wrong direction. The report cut both ways, and a one-sided account cannot explain to you who was angry.",
+    "explanation": "The final report criticised the ANC as well. It named torture and executions in the training camps in exile. It also named the necklace killings by supporters of the United Democratic Front. That is why Mbeki objected and why the ANC tried to block publication. Option {opt2} narrows it further in the same wrong direction. The report criticised both sides, and a one-sided account cannot explain to you who was angry.",
     "id": 7,
     "slot": 7,
     "section": "How it was built",
@@ -1135,7 +1255,7 @@ document.getElementById('restart-btn').addEventListener('click', () => { review.
 
 /* The button at the end of the file is the thing that continues. It does not
    point at a control somewhere else on the page. */
-document.getElementById('finish-btn').addEventListener('click', () => { KulaLMS.advance(); });
+document.getElementById('finish-btn').onclick = () => { KulaLMS.advance(); };
 
 function weakestSection(){
   let worst = SECTIONS[0], worstPct = 2;
@@ -1163,13 +1283,13 @@ function showReview(){
   let band='', desc='';
   const weakest = weakestSection();
   if(IS_AFTER){
-    if(pct>=85){ band='Excellent'; desc='The facts have stuck. Your last step is to write the essay question out under timed conditions: one hour, three pages.'; }
-    else if(pct>=70){ band='Strong'; desc='Strong recall after the lessons. Look again at anything you missed, then write the essay out under time.'; }
-    else if(pct>=55){ band='Solid'; desc='A solid base. Your weakest area was ' + weakest + '. Go back to the lesson that covers it, then try the timed essay.'; }
+    if(pct>=85){ band='Excellent'; desc='The facts have stuck. Your last step is to sit the Lesson 5 source run again, this time against the clock.'; }
+    else if(pct>=70){ band='Strong'; desc='Strong recall after the lessons. Look again at anything you missed, then sit the Lesson 5 source run against the clock.'; }
+    else if(pct>=55){ band='Solid'; desc='A solid base. Your weakest area was ' + weakest + '. Go back to the lesson that covers it, then sit the Lesson 5 source run against the clock.'; }
     else if(pct>=40){ band='Patchy'; desc='Some of it has stuck and some has not. Your weakest area was ' + weakest + '. Revisit that lesson, then take this again.'; }
     else { band='Start again'; desc='The facts have not settled yet. Go back to the lessons, starting with ' + weakest + ', and work through them again before the exam.'; }
   } else {
-    if(pct>=85){ band='Excellent'; desc='A strong start even before the lessons. Go to Lesson 1 and start turning these facts into an argument.'; }
+    if(pct>=85){ band='Excellent'; desc='A strong start even before the lessons. Go to Lesson 1 and start turning these facts into evidence you can use.'; }
     else if(pct>=70){ band='Strong'; desc='You already know a lot of this. Go to Lesson 1, where you learn to use it.'; }
     else if(pct>=55){ band='Solid'; desc='A decent base to build on. Go to Lesson 1 and start building the argument.'; }
     else if(pct>=40){ band='Patchy'; desc='A normal starting point before studying a topic. Go to Lesson 1: that is exactly what it is for.'; }
@@ -1249,10 +1369,17 @@ buildMenu();
      other way round, so the choice did not survive crossing between a source
      unit and an essay unit. For an essay unit set NATIVE "dark", FLIP "light",
      CLS "bright". Nothing else changes. */
-  var NATIVE = "light";   // the mode this unit is designed in
-  var FLIP   = "dark";    // the mode the toggle offers
+  var NATIVE = "light";   // the mode the stylesheet produces with no class on body
+  var FLIP   = "dark";    // the mode the class produces
   var CLS    = "dark";    // the class that produces FLIP in this unit
-  try{ if(localStorage.getItem("kula-mode")===FLIP){ document.body.classList.add(CLS); } }catch(e){}
+  /* The unit OPENS in dark. body carries the class in the markup rather than
+     having it added here, so there is no flash of the light ground before
+     this script runs at the foot of the document. All this block does is
+     honour a learner who has already chosen otherwise. */
+  var stored = null;
+  try{ stored = localStorage.getItem("kula-mode"); }catch(e){}
+  if(stored === NATIVE) document.body.classList.remove(CLS);
+  else if(stored === FLIP) document.body.classList.add(CLS);
   var SUN='<circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/>';
   var MOON='<path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/>';
   var b=document.getElementById("kula-mode-toggle");
