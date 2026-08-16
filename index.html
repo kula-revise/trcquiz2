@@ -27,7 +27,7 @@
     --paper: #FBF6EB;   /* cards */
     --cut:   #FFFCF4;   /* insets, sources, carousels */
     --ink:   #1B2A33;   /* body text */
-    --clay:  #8C4A2F;   /* stage tags, quiet labels */
+    --clay:  #A5341B;   /* stage tags, quiet labels */
     --fade:  #7B7263;   /* muted text, captions */
     --a1: #B4622D;   --a1-rgb: 180,98,45;
     --a2: #1F6B58;   --a2-rgb: 31,107,88;
@@ -50,14 +50,14 @@
     --ink-deep:   #12202a;              /* --ink one step darker, button hover */
     --a2-deep:    #164C3F;              /* --a2 one step darker, button hover */
     --ok-bg:      rgba(var(--a2-rgb),0.13);  /* a correct option, a placed item */
-    --no-bg:      rgba(140,74,47,0.13);      /* a wrong option, a misplaced item */
+    --no-bg:      rgba(165,52,27,0.13);      /* a wrong option, a misplaced item */
     /* Skill chips. a = the entry-level skill (Extract, Argue, Evidence, Recall).
        b = the middle skill (Interpret, Understand). c = unassessed instinct.
        The top skill (Evaluate, Weigh, Apply) sits on a solid accent ground. */
     --chip-a-bg: rgba(var(--a1-rgb),0.16);  --chip-a-fg: var(--a1);
     --chip-b-bg: rgba(var(--a2-rgb),0.16);  --chip-b-fg: var(--chip-ink);
     --chip-c-bg: rgba(0,0,0,0.06);
-    --scrim:  rgba(27,42,51,0.5);       /* modal backdrop */
+    --scrim:  rgba(20,31,33,0.5);       /* modal backdrop */
     --inset:  rgba(255,255,255,0.4);    /* sort column well */
 
     /* Legacy aliases. Older skins and the quiz shell reference these. */
@@ -186,22 +186,22 @@
 */
 
 :root {
-  --sand:  #E6EAE5;   /* page: neutral stone, faintly green */
-  --paper: #F8FAF7;   /* cards: cut face */
-  --cut:   #D8DED7;   /* insets, sources, carousels */
-  --ink:   #16201B;
-  --clay:  #4E5A52;   /* stage tags, quiet labels */
-  --fade:  #515D55;
+  --sand:  #E4EBEC;   /* page: neutral stone, faintly teal */
+  --paper: #F7FAFB;   /* cards: cut face */
+  --cut:   #D6DFE1;   /* insets, sources, carousels */
+  --ink:   #141F21;
+  --clay:  #4C585A;   /* stage tags, quiet labels */
+  --fade:  #4F5B5D;
   /* bottle green for the structure, copper for anything the learner earned */
-  --a1: #1D4D3B;  --a1-rgb: 29,77,59;
-  --a2: #9E5320;  --a2-rgb: 158,83,32;
+  --a1: #076A73;  --a1-rgb: 7,106,115;
+  --a2: #B51554;  --a2-rgb: 181,21,84;
   /* The interpret and understand chips put --a2 on a tint of itself and measured 4.32.
      One step darker clears 4.5 and is used for the chip text only. */
-  --chip-ink: #8F4A1C;
+  --chip-ink: #A81450;
   /* The two hover steps are derived, not identity. Left in the engine block
      they kept the engine's bottle green against this skin's copper. */
-  --ink-deep: #0F1613;
-  --a2-deep:  #783E18;
+  --ink-deep: #0A1416;
+  --a2-deep:  #950F44;
   --serif: Georgia, 'Times New Roman', serif;
   --sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --mono: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace;
@@ -215,7 +215,7 @@ body {
   background-image:
     repeating-linear-gradient(0deg,
       transparent 0 63px,
-      rgba(22,32,27,0.055) 63px 64px,
+      rgba(20,31,33,0.055) 63px 64px,
       rgba(255,255,255,0.55) 64px 65px,
       transparent 65px 66px) !important;
 }
@@ -229,7 +229,7 @@ h1, h2, h3 {
       applied. The dark line and the light line under it are the whole move. */
 .card, .source, .stat-wrap, .carousel, .kt {
   border-radius: 0 !important;
-  border: 1px solid rgba(29,77,59,0.24) !important;
+  border: 1px solid rgba(7,106,115,0.24) !important;
   box-shadow: none !important;
 }
 .card, .stat-wrap, .carousel {
@@ -265,11 +265,11 @@ h1, h2, h3 {
 /* 4. A source is recessed: sunk panel, chiselled left edge, edges intact. */
 .source {
   background: var(--cut) !important;
-  border: 1px solid rgba(29,77,59,0.32) !important;
+  border: 1px solid rgba(7,106,115,0.32) !important;
   border-left: 6px solid var(--a1) !important;
   border-radius: 0 !important;
   padding: 1.2rem 1.25rem !important;
-  box-shadow: inset 2px 2px 5px rgba(22,32,27,0.11) !important;
+  box-shadow: inset 2px 2px 5px rgba(20,31,33,0.11) !important;
 }
 .source, .source p, .source li { font-family: var(--serif) !important; }
 .source-attr {
@@ -280,7 +280,7 @@ h1, h2, h3 {
   text-transform: none !important;
   color: var(--ink) !important;
   background: transparent;
-  border-bottom: 1px solid rgba(29,77,59,0.38);
+  border-bottom: 1px solid rgba(7,106,115,0.38);
   border-radius: 0;
   padding: 0 0 0.6rem 0;
   margin-bottom: 0.92rem;
@@ -344,7 +344,7 @@ h1, h2, h3 {
   font-family: var(--sans) !important;
   font-weight: 600 !important;
 }
-.btn-begin:hover { background: #133728 !important; border-color: #133728 !important; }
+.btn-begin:hover { background: #04545C !important; border-color: #04545C !important; }
 .primary-btn, .secondary-btn, .section-btn, .primary-btn-small {
   border-radius: 0 !important;
   font-family: var(--sans) !important;
@@ -369,7 +369,7 @@ h1, h2, h3 {
   padding-top: 0.6rem;
 }
 .figure img, .figure svg {
-  border: 1px solid rgba(29,77,59,0.42) !important;
+  border: 1px solid rgba(7,106,115,0.42) !important;
   border-radius: 0 !important;
 }
 /* Original illustrations are inline SVG so they inherit the thirteen tokens and
@@ -397,28 +397,28 @@ h1, h2, h3 {
    inherits and --muted is every expander body. Measured at 8.6 against --paper and 7.4 against --cut, which is the
    ground it actually sits on inside a source expander. */
 body.dark {
-  --sand:  #101613;
-  --paper: #1A221E;
-  --cut:   #242D28;
-  --ink:   #E7EDE9;
-  --clay:  #9FAEA6;
-  --fade:  #B6C4BC;
-  --a1: #6FBF9C;  --a1-rgb: 111,191,156;
-  --a2: #E8A263;  --a2-rgb: 232,162,99;
+  --sand:  #0C1618;
+  --paper: #152122;
+  --cut:   #1F2C2E;
+  --ink:   #E5EEEF;
+  --clay:  #9DAEB0;
+  --fade:  #B4C4C6;
+  --a1: #4FC9D6;  --a1-rgb: 79,201,214;
+  --a2: #FF7A9C;  --a2-rgb: 255,122,156;
   /* On a dark ground a hover step goes lighter, not deeper. */
   --ink-deep: #FFFFFF;
-  --a2-deep:  #F2BE8C;
+  --a2-deep:  #FFA3BB;
 }
 body.dark {
   background-image:
     repeating-linear-gradient(0deg,
       transparent 0 63px,
       rgba(0,0,0,0.35) 63px 64px,
-      rgba(231,237,233,0.07) 64px 65px,
+      rgba(229,238,239,0.07) 64px 65px,
       transparent 65px 66px) !important;
 }
 body.dark .card, body.dark .source, body.dark .stat-wrap,
-body.dark .carousel, body.dark .kt { border-color: rgba(111,191,156,0.28) !important; }
+body.dark .carousel, body.dark .kt { border-color: rgba(79,201,214,0.28) !important; }
 body.dark .card, body.dark .stat-wrap, body.dark .carousel {
   box-shadow: inset 0 3px 0 0 rgba(0,0,0,0.45) !important;
 }
@@ -426,11 +426,11 @@ body.dark .source {
   border-left-color: var(--a1) !important;
   box-shadow: inset 2px 2px 5px rgba(0,0,0,0.40) !important;
 }
-body.dark .source-attr { border-bottom-color: rgba(111,191,156,0.36); }
+body.dark .source-attr { border-bottom-color: rgba(79,201,214,0.36); }
 body.dark .stage-tag, body.dark .kt-label,
-body.dark .expl-label, body.dark .pop-label { color: #101613 !important; }
-body.dark .btn-begin { color: #101613 !important; }
-body.dark .btn-begin:hover { background: #8CD0B2 !important; border-color: #8CD0B2 !important; }
+body.dark .expl-label, body.dark .pop-label { color: #0C1618 !important; }
+body.dark .btn-begin { color: #0C1618 !important; }
+body.dark .btn-begin:hover { background: #7FDCE6 !important; border-color: #7FDCE6 !important; }
 body.dark .rule, body.dark .cover-rule, body.dark .flourish, body.dark .story-rule {
   background-image:
     linear-gradient(180deg,
@@ -439,20 +439,20 @@ body.dark .rule, body.dark .cover-rule, body.dark .flourish, body.dark .story-ru
       transparent 5px 6px) !important;
 }
 body.dark .figure img { filter: brightness(0.9) contrast(1.02); }
-body.dark .figure img, body.dark .figure svg { border-color: rgba(111,191,156,0.44) !important; }
+body.dark .figure img, body.dark .figure svg { border-color: rgba(79,201,214,0.44) !important; }
 
 body.dark .primary-btn {
   background: var(--cut) !important;
   color: var(--ink) !important;
-  border: 1px solid rgba(111,191,156,0.38) !important;
+  border: 1px solid rgba(79,201,214,0.38) !important;
 }
-body.dark .primary-btn:hover { background: #2C3730 !important; }
+body.dark .primary-btn:hover { background: #26343A !important; }
 body.dark .primary-btn .btn-title { color: var(--ink) !important; }
 body.dark .primary-btn .btn-sub   { color: var(--fade) !important; }
 body.dark .primary-btn .btn-num,
 body.dark .primary-btn .btn-arrow { color: var(--a1) !important; }
 body.dark .chip-apply {
-  background: rgba(231,237,233,0.16) !important;
+  background: rgba(229,238,239,0.16) !important;
   color: var(--ink) !important;
 }
 /* Light serif at 0.95rem thins out on a dark ground, and the explanation block
@@ -634,8 +634,8 @@ body { padding-bottom: 4.5rem !important; }
             the fill against the page  5.88 : 1
      dark   ink text on #93D98A       10.93 : 1
    ============================================================ */
-:root { --ok: #2A6335; --ok-rgb: 42,99,53; --on-ok: #F8FAF7; --no-line: #8C4A2F; }
-body.dark { --ok: #93D98A; --ok-rgb: 147,217,138; --on-ok: #101613; --no-line: #E8A263; }
+:root { --ok: #2A6335; --ok-rgb: 42,99,53; --on-ok: #F7FAFB; --no-line: #A5341B; }
+body.dark { --ok: #93D98A; --ok-rgb: 147,217,138; --on-ok: #0C1618; --no-line: #FF8A6E; }
 
 .option.correct, .option-btn.correct,
 body.dark .option.correct, body.dark .option-btn.correct {
@@ -657,11 +657,11 @@ body.dark .option.correct .opt-mark, body.dark .option-btn.correct .opt-mark {
 /* The wrong state takes the copper, never the strand's green. */
 .option.wrong, .option-btn.wrong,
 body.dark .option.wrong, body.dark .option-btn.wrong {
-  background: rgba(140,74,47,0.14) !important;
+  background: rgba(165,52,27,0.14) !important;
   border: 2px solid var(--no-line) !important;
   box-shadow: none !important;
 }
-body.dark .option.wrong, body.dark .option-btn.wrong { background: rgba(232,162,99,0.16) !important; }
+body.dark .option.wrong, body.dark .option-btn.wrong { background: rgba(255,122,156,0.16) !important; }
 .option.wrong .opt-letter, .option.wrong .opt-mark,
 .option-btn.wrong .opt-letter, .option-btn.wrong .opt-mark { color: var(--no-line) !important; }
 
@@ -681,10 +681,10 @@ body.dark .inter-item.ok span, body.dark .inter-item.ok .rank { color: var(--on-
 .inter-mark { font-weight: 700; font-size: 1.1rem; margin-left: 0.6rem; flex: 0 0 auto; }
 .inter-item.ok .inter-mark { color: var(--on-ok) !important; }
 .inter-item.no, body.dark .inter-item.no {
-  background: rgba(140,74,47,0.14) !important;
+  background: rgba(165,52,27,0.14) !important;
   border: 2px solid var(--no-line) !important;
 }
-body.dark .inter-item.no { background: rgba(232,162,99,0.16) !important; }
+body.dark .inter-item.no { background: rgba(255,122,156,0.16) !important; }
 .inter-item.no .inter-mark, .inter-item.no .rank { color: var(--no-line) !important; }
 .inter-should {
   display: block; margin-top: 0.3rem;
